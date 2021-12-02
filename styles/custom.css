@@ -1,0 +1,102 @@
+:root {
+  font-family: "Inria Sans", sans-serif;
+  font-size: 16px;
+  --white: #f2f2f2;
+}
+.home-page {
+  height: 100vh;
+  overflow: hidden;
+  background-image: url(../public/background.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.header {
+  display: flex;
+  padding: 1.5rem;
+  flex-direction: row-reverse;
+}
+.footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+}
+.color-white {
+  color: white;
+}
+.exclamation-icon {
+  height: 1.5rem;
+  width: auto;
+}
+/* Overrides */
+/* Buttons */
+.btn {
+  border-radius: 1.25rem;
+  font-size: 0.85rem;
+}
+.btn-primary {
+  background: linear-gradient(180deg, #1480f4 0%, #0262c8 100%);
+}
+.btn-danger {
+  background: linear-gradient(180deg, #dc3545 0%, #bd1122 100%);
+}
+.btn-outlined {
+  border: 1px solid var(--white);
+  color: var(--white);
+}
+.btn-outlined-primary:hover {
+  color: var(--white);
+}
+.form-group {
+  color: var(--white);
+}
+.form-group > label {
+  padding-bottom: 0.5rem;
+}
+.form-control,
+.form-group > input:focus {
+  border-style: none;
+  color: var(--white);
+  background-color: #333333;
+}
+.text-align-end {
+  text-align: end;
+}
+.body {
+  display: flex;
+  margin-top: 8rem;
+  justify-content: center;
+  align-items: center;
+}
+.invalid-feedback {
+  display: block;
+}
+.action-btn-group {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+.action-btn-group > * {
+  margin-inline: 0.5rem;
+}
+
+/* Elements */
+.glass {
+  padding: 2.4rem 2rem;
+  background: rgba(77, 91, 142, 0.3);
+  backdrop-filter: blur(20px);
+  color: var(--white);
+  border-radius: 0.75rem;
+}
+.glass-danger {
+  background: rgba(221, 165, 165, 0.2);
+  border-image-slice: 1;
+  border-radius: 0.75rem;
+}
+
+/* Components */
+.currency-converter,
+.wallet-details {
+  min-width: 20rem;
+}

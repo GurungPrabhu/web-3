@@ -1,11 +1,24 @@
 import React from "react";
 import { ButtonProps } from "@models";
 
-const Button: React.FC<ButtonProps> = ({ onClick, children }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({
+  onClick,
+  type,
+  disabled,
+  children,
+}: ButtonProps) => {
   return (
-    <button onClick={onClick} className="btn">
-      {children}
-    </button>
+    <div>
+      <button
+        disabled={disabled || false}
+        onClick={onClick}
+        className={`btn btn-${type} ${
+          type === "outlined" && "btn-outlined-primary"
+        }`}
+      >
+        {children}
+      </button>
+    </div>
   );
 };
 

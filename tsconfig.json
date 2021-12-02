@@ -17,7 +17,8 @@
     "paths": {
       "@components": ["components/index.ts"],
       "@elements": ["elements/index.ts"],
-      "@models": ["models/index.d.ts"]
+      "@models": ["models/index.d.ts"],
+      "@constants": ["constants/index.ts"]
     },
     "incremental": true
   },
