@@ -12,7 +12,13 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "baseUrl": ".",
     "jsx": "preserve",
+    "paths": {
+      "@components": ["components/index.ts"],
+      "@elements": ["elements/index.ts"],
+      "@models": ["models/index.d.ts"]
+    },
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
