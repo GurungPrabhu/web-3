@@ -102,3 +102,9 @@ body {
 .wallet-details {
   min-width: 20rem;
 }
+@media (max-width: 570px) {
+  .wallet-details {
+    max-width: 20rem;
+    overflow-wrap: break-word;
+  }
+}
