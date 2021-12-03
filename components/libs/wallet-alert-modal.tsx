@@ -1,8 +1,8 @@
+import React, { useContext, useEffect, useState } from "react";
+import { useWeb3React } from "@web3-react/core";
 import { ComponentContext, injected } from "@components";
 import { CONVERTER, WALLET_DETAIL } from "@constants";
 import { Button } from "@elements";
-import { useWeb3React } from "@web3-react/core";
-import React, { useContext, useEffect, useState } from "react";
 
 const WalletAlertModal: React.FC = () => {
   const { setVisibleComponent } = useContext(ComponentContext);
