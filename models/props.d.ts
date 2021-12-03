@@ -4,3 +4,7 @@ export interface ButtonProps {
   type: "primary" | "danger" | "outlined";
   disabled?: boolean;
 }
+
+export interface HeaderProps {
+  onClick?: () => void;
+}

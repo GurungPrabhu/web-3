@@ -1,6 +1,8 @@
 import React from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { Web3ReactProvider } from "@web3-react/core";
+import { ComponentContextProvider, getLibrary } from "@components";
 import "../styles/index.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -14,7 +16,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <Component {...pageProps} />
+      <Web3ReactProvider getLibrary={getLibrary}>
+        <ComponentContextProvider>
+          <Component {...pageProps} />
+        </ComponentContextProvider>
+      </Web3ReactProvider>
     </div>
   );
 }

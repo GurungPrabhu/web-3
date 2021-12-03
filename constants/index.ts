@@ -11,3 +11,7 @@ export const PLACEHOLDER = {
   NEP: "Enter amount in Nepali Rs.",
   BUSD: "Enter amount in BUSD",
 };
+
+export const CONVERTER = "converter";
+export const ALERT_MODAL = "alert-modal";
+export const WALLET_DETAIL = "wallet-detail";

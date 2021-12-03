@@ -44,6 +44,11 @@ const CurrencyConverter = () => {
     } else setErrors((errors) => ({ ...errors, busd: INVALID_INPUT_TYPE }));
   };
 
+  const handleFocus = (e: FormEvent<HTMLInputElement>): void => {
+    if (selectedField !== e.currentTarget.name)
+      setSelectedField(e.currentTarget.name);
+  };
+
   const handleInputClick = (e: FormEvent<HTMLInputElement>): void => {
     setSelectedField(e.currentTarget.name);
   };
@@ -73,6 +78,7 @@ const CurrencyConverter = () => {
           placeholder={PLACEHOLDER.NEP}
           onClick={handleInputClick}
           onChange={handleNepChange}
+          onFocus={handleFocus}
           value={nepValue}
         />
         {errors.nep?.length > 0 && (
@@ -86,6 +92,7 @@ const CurrencyConverter = () => {
           name={BUSD}
           placeholder={PLACEHOLDER.BUSD}
           className="form-control"
+          onFocus={handleFocus}
           onChange={handleBusdChange}
           onClick={handleInputClick}
           value={busdValue}
