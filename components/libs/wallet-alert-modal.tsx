@@ -8,22 +8,24 @@ const WalletAlertModal: React.FC = () => {
   const { setVisibleComponent } = useContext(ComponentContext);
   const { activate, error, active } = useWeb3React();
   const [activating, setActivation] = useState(false);
-  const [isError, setError] = useState(false);
+  const [errorMessage, setError] = useState<undefined | string>();
   const [timeoutError, setTimeoutError] = useState(false);
 
   useEffect(() => {
-    if (error) setError(true);
+    if (error) {
+      setError(error.message);
+    }
   }, [error]);
 
   useEffect(() => {
-    if (isError) setTimeout(() => setError(false), 3000);
+    if (errorMessage) setTimeout(() => setError(undefined), 3000);
     if (timeoutError)
       setTimeout(() => {
         setTimeoutError(false);
         setActivation(false);
         location.reload();
       }, 6000);
-  }, [isError, timeoutError]);
+  }, [errorMessage, timeoutError]);
 
   useEffect(() => {
     if (activating)
@@ -41,33 +43,37 @@ const WalletAlertModal: React.FC = () => {
     try {
       await activate(injected);
     } catch (err) {
-      setError(true);
+      setError("Couldn't activate!");
     } finally {
       setActivation(false);
     }
   };
 
+  const handleCancel = () => {
+    setVisibleComponent(CONVERTER);
+    setError("");
+  };
   return (
     <div className="glass glass-danger p-5">
-      <div className="row mb-4 h5">
+      <div className="row mb-4 h5 justify-content-center">
         <img src="/../error.png" className="exclamation-icon" />
         Wallet not Connected!
       </div>
       <div className="action-btn-group">
         <Button
-          type={isError ? `danger` : `primary`}
+          type={errorMessage ? `danger` : `primary`}
           onClick={handleClickConnect}
-          disabled={isError && true}
+          disabled={errorMessage ? true : false}
         >
-          {activating ? "Connecting" : isError ? "Error" : "Connect"}
+          {activating ? "Connecting" : errorMessage ? "Error" : "Connect"}
         </Button>
-        <Button type="outlined" onClick={() => setVisibleComponent(CONVERTER)}>
+        <Button type="outlined" onClick={handleCancel}>
           Cancel
         </Button>
       </div>
-      {timeoutError && (
+      {errorMessage && (
         <div className="row text-center text-danger">
-          <span>Request timeout!</span>
+          <span>{errorMessage}</span>
         </div>
       )}
     </div>
